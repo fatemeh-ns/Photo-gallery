@@ -1,0 +1,119 @@
+:root {
+  /* *** */
+  --color-primary: #f3a712;
+  --color-bg: #fff;
+  --color-border: #cbc8c5;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-shadow-light: rgba(0, 0, 0, 0.2);
+
+  /* *** */
+  --img-box-width: 230px;
+  --img-box-height: 330px;
+  --img-width: 210px;
+  --img-height: 250px;
+  --container-max-width: 1200px;
+
+  /* *** */
+  --transition-smooth: all 0.6s ease-out;
+  --transition-fast: all 0.3s ease-in-out;
+  --box-shadow: 0 4px 15px -2px var(--color-shadow);
+  --img-shadow: 3px 5px 10px var(--color-shadow-light);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main h2 {
+  color: var(--color-primary);
+  padding: 1.8rem 2.5rem;
+}
+
+.imgContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+.imgBox {
+  background-color: var(--color-bg);
+  width: var(--img-box-width);
+  height: var(--img-box-height);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: var(--transition-smooth);
+  box-shadow: var(--box-shadow);
+}
+
+.imgBox.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.imgBox img {
+  width: var(--img-width);
+  height: var(--img-height);
+  border-radius: 10px;
+  box-shadow: var(--img-shadow);
+}
+
+.imageTitle {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  color: var(--color-primary);
+}
+
+.imgInfo {
+  border-top: 1px solid var(--color-border);
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem;
+}
+
+.emptyText {
+  color: var(--color-primary);
+  font-size: 20px;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.imgBox:hover {
+  transform: scale(1.3);
+  z-index: 1;
+  transition: var(--transition-fast);
+}
+
+/* ***** */
+@media (max-width: 500px) {
+  .imgBox {
+    width: 90%;
+    height: auto;
+  }
+
+  .imgBox img {
+    width: 100%;
+    height: auto;
+  }
+
+  .imageTitle,
+  .imgInfo {
+    flex-direction: column;
+    gap: 0.3rem;
+    text-align: center;
+  }
+}
